@@ -5,8 +5,9 @@ import string
 
 alphabet = string.ascii_uppercase
 
-def calculTableMultiplication(n) :
-    #print([[i*j%n for i in range(n)] for j in range(n)])
+def calculTableMultiplicationModulo(n) :
+    #return [[i*j%n for i in range(n)] for j in range(n)]
+    
     listA = list()
     listB = list()
     for i in range(n) :
@@ -18,7 +19,7 @@ def calculTableMultiplication(n) :
 
 
 def calculInverse(m, n) :
-    listeMult = calculTableMultiplication(n)
+    listeMult = calculTableMultiplicationModulo(n)
     for i in range(n) :
         if listeMult[m%n][i] == 1 :
             return i
