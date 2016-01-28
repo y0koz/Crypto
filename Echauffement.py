@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#! /usr/bin/python
 
 import sys
 import string
@@ -46,15 +46,12 @@ def frequence(nomFichier) :
     
     return frequence
 
-    
- 
-#print(calculTableMultiplication(12))
 
 n=12
 m=8
 
+print(calculTableMultiplication(12))
 print(calculInverse(m,n))
 print(listDiviseurs(n))
 print(pgcd(m,n))
-
-print(frequence("texte.txt"))
+print(frequence("text/texte.txt"))
