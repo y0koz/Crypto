@@ -37,23 +37,24 @@ def frequence(nomFichier) :
     file = open(nomFichier, "r")
     texte = file.read().upper()
     file.close()
-    for j in range(len(texte)) :
-        if(texte[j].isalpha()) :
+    for c in range(len(texte)) :
+        if(texte[c].isalpha()) :
             cptLettre += 1
-            frequence[texte[j]] += 1
+            frequence[texte[c]] += 1
 
     for cle, valeur in frequence.items() :
         frequence[cle] = (float(valeur) / float(cptLettre)) * 100
     
     return frequence
 
+def write_frequency(frequency, filename) :
+    file = open(filename, "w")
+    for key, value in frequency.items() :
+        file.write(key + " " + str(value) + "\n")
+    file.close()
+        
 
-n=12
-m=8
 
-print(calculTableMultiplicationModulo(12))
-print(calculInverse(m,n))
-print(listDiviseurs(n))
-print(pgcd(m,n))
-print(frequence("text/texte.txt"))
+frequency = frequence("text/english/The Kama Sutra.txt")
+write_frequency(frequency, "TheKamaSutra_frequency.txt")
 
