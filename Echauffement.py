@@ -51,8 +51,9 @@ def frequence(nomFichier) :
 n=12
 m=8
 
-print(calculTableMultiplication(12))
+print(calculTableMultiplicationModulo(12))
 print(calculInverse(m,n))
 print(listDiviseurs(n))
 print(pgcd(m,n))
 print(frequence("text/texte.txt"))
+
