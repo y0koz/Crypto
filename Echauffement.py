@@ -36,11 +36,11 @@ def frequence(nomFichier) :
     frequence = dict([(alphabet[i], 0) for i in range(len(alphabet))])
     file = open(nomFichier, "r")
     texte = file.read().upper()
+    file.close()
     for j in range(len(texte)) :
-        if(texte[j] != '\n') :
+        if(texte[j].isalpha()) :
             cptLettre += 1
             frequence[texte[j]] += 1
-    file.close()
 
     for cle, valeur in frequence.items() :
         frequence[cle] = (float(valeur) / float(cptLettre)) * 100
