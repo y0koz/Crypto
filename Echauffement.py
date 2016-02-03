@@ -3,6 +3,8 @@
 import sys
 import string
 
+#from string import maketrans
+
 alphabet = string.ascii_uppercase
 
 def calculTableMultiplicationModulo(n) :
@@ -37,24 +39,43 @@ def frequence(nomFichier) :
     file = open(nomFichier, "r")
     texte = file.read().upper()
     file.close()
-    for c in range(len(texte)) :
-        if(texte[c].isalpha()) :
+    for c in texte :
+        if c in alphabet :
             cptLettre += 1
-            frequence[texte[c]] += 1
+            frequence[c] += 1
 
     for cle, valeur in frequence.items() :
         frequence[cle] = (float(valeur) / float(cptLettre)) * 100
     
     return frequence
 
-def write_frequency(frequency, filename) :
-    file = open(filename, "w")
+def format_frequency(frequency) :
+    ret = ""
     for key, value in frequency.items() :
-        file.write(key + " " + str(value) + "\n")
-    file.close()
-        
+        ret += key + " " + str(value) + "\n"
+    return ret
 
 
-frequency = frequence("text/english/The Kama Sutra.txt")
-write_frequency(frequency, "TheKamaSutra_frequency.txt")
+def chiffrement_cesar (message, cle):
+    message = message.upper()
+    dec = (ord(cle.upper()) - ord('A'))%len(alphabet)
+    print dec
+    message_chiffre = ""
+    for x in message :
+         message_chiffre += chr(((ord(x) - ord('A') + dec )%len(alphabet)) + ord('A'))
+    return message_chiffre
 
+
+def chiffrement_cesar_Bis (message, cle):
+    message = message.upper()
+    dec = (ord(cle.upper()) - ord('A'))%len(alphabet)
+    alphabet_dec = alphabet[dec:] + alphabet[:dec]
+    return message.translate(string.maketrans(alphabet, alphabet_dec))
+                             
+    
+    
+#frequency = frequence(sys.argv[1])
+#print(format_frequency(frequency))
+mes="BonjourParis"
+print (chiffrement_cesar(mes, 'b'))
+print (chiffrement_cesar_Bis (mes, 'b'))
