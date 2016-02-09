@@ -8,7 +8,7 @@ alphabet = string.ascii_uppercase
 def frequency(filename) :
     nbletter = 0
     frequency = dict([(alphabet[i], 0) for i in range(len(alphabet))])
-    file = open(nomFichier, "r")
+    file = open(filename, "r")
     text = file.read().upper()
     file.close()
     for c in text :
