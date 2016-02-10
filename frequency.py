@@ -27,5 +27,6 @@ def format_frequency(frequency) :
         ret += key + " " + str(value) + "\n"
     return ret
 
-frequency = frequency(sys.argv[1])
-print(format_frequency(frequency))
+if __name__ == "__main__":
+    frequencies = frequency(sys.argv[1])
+    print(format_frequency(frequencies))

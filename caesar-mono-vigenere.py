@@ -74,31 +74,31 @@ def dechiffrement_vigenere(chiffre, key):
         message += chr(ord('A') + (codelettre + decalage)%len(alphabet))
     return message
 
+if __name__ == "__main__":
+    print("\n")
+    message = "BonjourParis"
+    print("Message: " + message)
 
-print("\n")
-message = "BonjourParis"
-print("Message: " + message)
-
-# César
-cleCesar = "b"
-print("Clé César: " + cleCesar)
-chiffreCesar = chiffrement_cesar(message, cleCesar)
-print("Chiffré César: " + chiffreCesar)
-dechiffreCesar = dechiffrement_cesar(chiffreCesar, cleCesar)
-print("Déchiffré César: " + dechiffreCesar)
-
-# Mono-alphabétique
-cleMono = getRandomAlphabet()
-print("Clé Mono: " + cleMono)
-chiffreMono = chiffrement_mono(message, cleMono)
-print("Chiffré Mono: " + chiffreMono)
-dechiffreMono = dechiffrement_mono(chiffreMono, cleMono)
-print("Déchiffré Mono: " + dechiffreMono)
-
-# Vigenère
-cleVigenere = "pass"
-print("Clé Vigenère: " + cleVigenere)
-chiffreVigenere = chiffrement_vigenere(message, cleVigenere)
-print("Chiffré Vigenère: " + chiffreVigenere)
-dechiffreVigenere = dechiffrement_vigenere(chiffreVigenere, cleVigenere)
-print("Déchiffré Vigenère: " + dechiffreVigenere)
+    # César
+    cleCesar = "b"
+    print("Clé César: " + cleCesar)
+    chiffreCesar = chiffrement_cesar(message, cleCesar)
+    print("Chiffré César: " + chiffreCesar)
+    dechiffreCesar = dechiffrement_cesar(chiffreCesar, cleCesar)
+    print("Déchiffré César: " + dechiffreCesar)
+    
+    # Mono-alphabétique
+    cleMono = getRandomAlphabet()
+    print("Clé Mono: " + cleMono)
+    chiffreMono = chiffrement_mono(message, cleMono)
+    print("Chiffré Mono: " + chiffreMono)
+    dechiffreMono = dechiffrement_mono(chiffreMono, cleMono)
+    print("Déchiffré Mono: " + dechiffreMono)
+    
+    # Vigenère
+    cleVigenere = "pass"
+    print("Clé Vigenère: " + cleVigenere)
+    chiffreVigenere = chiffrement_vigenere(message, cleVigenere)
+    print("Chiffré Vigenère: " + chiffreVigenere)
+    dechiffreVigenere = dechiffrement_vigenere(chiffreVigenere, cleVigenere)
+    print("Déchiffré Vigenère: " + dechiffreVigenere)
