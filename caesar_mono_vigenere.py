@@ -1,4 +1,5 @@
 #! /usr/bin/python
+# -*- coding: utf-8 -*-
 
 import sys
 import string
@@ -16,9 +17,9 @@ alphabet = string.ascii_uppercase
     return message_chiffre"""
 
 def normalize_key_cesar(key):
-    """le cle peut être un caractère ou un entier indicant le décalage,
-    si la cle est une chaine de longueur superieure à 1, 
-    alors le premier caractère de celle-ci est utilisé comme cle."""
+    """le cle peut etre un caractere ou un entier indicant le decalage,
+    si la cle est une chaine de longueur superieure a 1, 
+    alors le premier caractere de celle-ci est utilise comme cle."""
     if type(key) is int :
         return (key % len(alphabet))
     elif type(key) is str :
@@ -79,14 +80,14 @@ if __name__ == "__main__":
     message = "BonjourParis"
     print("Message: " + message)
 
-    # César
+    # Cesar
     cleCesar = "b"
     print("Clé César: " + cleCesar)
     chiffreCesar = chiffrement_cesar(message, cleCesar)
     print("Chiffré César: " + chiffreCesar)
     dechiffreCesar = dechiffrement_cesar(chiffreCesar, cleCesar)
     print("Déchiffré César: " + dechiffreCesar)
-    
+
     # Mono-alphabétique
     cleMono = getRandomAlphabet()
     print("Clé Mono: " + cleMono)
@@ -94,7 +95,7 @@ if __name__ == "__main__":
     print("Chiffré Mono: " + chiffreMono)
     dechiffreMono = dechiffrement_mono(chiffreMono, cleMono)
     print("Déchiffré Mono: " + dechiffreMono)
-    
+
     # Vigenère
     cleVigenere = "pass"
     print("Clé Vigenère: " + cleVigenere)
@@ -102,3 +103,6 @@ if __name__ == "__main__":
     print("Chiffré Vigenère: " + chiffreVigenere)
     dechiffreVigenere = dechiffrement_vigenere(chiffreVigenere, cleVigenere)
     print("Déchiffré Vigenère: " + dechiffreVigenere)
+
+
+    
