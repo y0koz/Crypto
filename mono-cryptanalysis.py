@@ -5,10 +5,10 @@ from frequency import frequency
 from caesar_mono_vigenere import *
 
 fileFrench = "./text/french/germinal_nettoye.txt"
-fileChiffre = "./text/extrait_chiffre.txt"
+fileChiffre = "./text/french/extrait_chiffre.txt"
 
 file = open(fileChiffre,"r")
-message = file.read()
+messageChiffre = file.read()
 
 frequenceFrench = frequency(fileFrench)
 frequenceChiffre = frequency(fileChiffre)
@@ -19,10 +19,10 @@ def trier(dico):
     return sorted(items, comparateur, reverse=True)
 
 def findKey(listFreqLangage, listFreqChiffre):
-    key = alphabet
+    key = list(alphabet)
     for i in range(len(listFreqLangage)):
         key[ord(listFreqLangage[i][0])-ord('A')] = listFreqChiffre[i][0]
-    return key
+    return "".join(key)
     
 
 print(frequenceFrench)
@@ -30,5 +30,6 @@ print(frequenceChiffre)
 listFreqLangage = trier(frequenceFrench)
 listFreqChiffre = trier(frequenceChiffre)
 key = findKey(listFreqLangage, listFreqChiffre)
-clair = dechiffrement_mono(message, key)
-print(clair)
+message = dechiffrement_mono(messageChiffre, key)
+print(key)
+print(message)
