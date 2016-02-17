@@ -1,7 +1,7 @@
 #! /usr/bin/python
 
 import sys, string
-from frequency import frequency
+from frequency import *
 from caesar_mono_vigenere import *
 
 fileFrench = "./text/french/germinal_nettoye.txt"

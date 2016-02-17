@@ -5,12 +5,9 @@ import string
 
 alphabet = string.ascii_uppercase
 
-def frequency(filename) :
+def frequency(text) :
     nbletter = 0
     frequency = dict([(alphabet[i], 0) for i in range(len(alphabet))])
-    file = open(filename, "r")
-    text = file.read().upper()
-    file.close()
     for c in text :
         if c in alphabet :
             nbletter += 1
@@ -20,6 +17,12 @@ def frequency(filename) :
         frequency[key] = (float(value) / float(nbletter)) * 100
     
     return frequency
+
+def frequency_fromFile(filename) :
+    file = open(filename, "r")
+    text = file.read().upper()
+    file.close()
+    return frequency(text)
 	
 def format_frequency(frequency) :
     ret = ""
