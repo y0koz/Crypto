@@ -55,6 +55,3 @@ print '%d*%d + (%d)*%d = %d' % (res_bezout[1][0], max(i,k), res_bezout[1][1], mi
 print inverse_modulaire(3,11)
 print lister_inversibles(11)
 print indicateur_euler(11)
-
-
-    
