@@ -62,6 +62,3 @@ revCle = inverseClePermu(clePermutation)
 print revCle
 permut = permuterChaine(clePermutation, chiffre)
 print permut
-
-    
-
