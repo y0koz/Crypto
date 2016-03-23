@@ -1,5 +1,7 @@
 #! /usr/bin/python
 
+from Echauffement import *
+
 def matriceTodico(mat):
     ADFGVX = "ADFGVX"
     dico = dict()
@@ -53,12 +55,12 @@ def permuterChaine(clePermu, chaine):
 def chiffrementADFGVX(message, matrice, clePermutation):
     return permuterChaine(clePermutation, chiffreChaine(matriceTodico(matrice), message))
 
-def dechiffrementADFGVX(message, matrice, clePermutation) :
+"""def dechiffrementADFGVX(message, matrice, clePermutation) :
     nbLine = len(message)/len( clePermutation)
     permutedTab=["" for i in range(nbLine)]
     for j in range(len(message)) :
         permutedTab[j%(len( clePermutation))]+=message[j]
-    len clePermutation = len( clePermutation)
+    clePermutation = len( clePermutation)
     for i in range(len clePermutation) :
          clePermutation[i] -= 1
     originalTab = []
@@ -69,7 +71,7 @@ def dechiffrementADFGVX(message, matrice, clePermutation) :
     message = ""
     for i in range(len(ADFmessage)/2) :
         message += matrice[eq_ADF_index[ADFmessage[i*2]]][eq_ADF_index[ADFmessage[i*2+1]]]
-    print message
+    print message"""
 
 
 matrice = [
@@ -85,3 +87,34 @@ message = "attaque"
 clePermutation = [3,1,2,4]
 
 print chiffrementADFGVX(message, matrice, clePermutation)
+
+def chiffrementAffine(message, cle):
+    if(pgcd(cle[0], 26) != 1):
+        print 'La valeur a %d de la cle doit etre premier avec 26' % cle[0]
+        return
+    else :
+        chiffre = ""
+        message = message.upper()
+        for i in range(len(message)):
+            codelettre = ord(message[i]) - ord('A')
+            codelettre = (((codelettre*cle[0]) + cle[1]) % 26) 
+            chiffre += chr(ord('A') + (codelettre))
+        return chiffre
+
+def dechiffrementAffine(chiffre, cle):
+    message = ""
+    chiffre = chiffre.upper()
+    inverseCle = calculInverse(cle[0], 26)
+    for i in range(len(chiffre)):
+        codelettre = ord(chiffre[i]) - ord('A')
+        codelettre = (((codelettre-cle[1])*inverseCle) % 26) 
+        message += chr(ord('A') + (codelettre))
+    return message
+
+
+message = "toto"
+cle = (3, 15)
+chiffre = chiffrementAffine(message, cle)
+print 'Chiffre de toto: ' + chiffre
+print calculInverse(cle[0], 26)
+print 'Dechiffre de ' + chiffre + ' : ' + dechiffrementAffine(chiffre, cle)

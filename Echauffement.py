@@ -27,4 +27,3 @@ def listDiviseurs(n) :
 
 def pgcd(m,n) :
     return max(list(set(listDiviseurs(m)) & set(listDiviseurs(n))))
-
